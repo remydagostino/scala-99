@@ -1,9 +1,6 @@
-package com.remydagostino.p99
+package com.remydagostino.s99
 
-import org.scalatest.prop.PropertyChecks
-import org.scalatest.{ Matchers, PropSpec }
-
-class P01Spec extends PropSpec with PropertyChecks with Matchers {
+class P01Spec extends UnitSpec {
   property("#last should return nothing when given an empty list") {
     assert(P01.last(List.empty) === None)
   }

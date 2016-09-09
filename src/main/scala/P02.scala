@@ -1,4 +1,4 @@
-package com.remydagostino.p99
+package com.remydagostino.s99
 
 object P02 {
   def penultimate[A](list: List[A]): Option[A] = list match {
