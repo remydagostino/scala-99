@@ -1,6 +1,6 @@
 package com.remydagostino.s99
 
-class P05Spec extends UnitSpec {
+class P05Spec extends UnitSpec with ListGens {
   property("#reverse reverses a sample length 5 list") {
     assert(P05.reverse(List(1, 2, 3, 4, 5)) === List(5, 4, 3, 2, 1))
   }
@@ -12,10 +12,8 @@ class P05Spec extends UnitSpec {
   }
 
   property("#reverse moves the first element to the end of the list") {
-    forAll { (list: List[Int]) =>
-      whenever(list.length > 0) {
-        assert(P05.reverse(list).head === list.last)
-      }
+    forAll(nonEmptyList[Int]) { (list) =>
+      assert(P05.reverse(list).head === list.last)
     }
   }
 }

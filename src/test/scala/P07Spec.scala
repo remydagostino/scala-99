@@ -1,21 +1,6 @@
 package com.remydagostino.s99
 
-import org.scalacheck.Gen
-import org.scalacheck.Arbitrary.arbitrary
-
-class P07Spec extends UnitSpec {
-  def nestList(list: List[Any], n: Int): List[Any] = {
-    if (n > 0)
-      list :: (List(list, (nestList(list, n - 1))))
-    else
-      list
-  }
-
-  def lumpyIntList = for {
-    list <- arbitrary[List[Int]]
-    num <- Gen.choose(0, 5)
-  } yield (nestList(list, num))
-
+class P07Spec extends UnitSpec with ListGens {
   property("#flatten fulfils the sample input") {
     val sample = List(List(1, 1), 2, List(3, List(5, 8)))
     val output = List(1, 1, 2, 3, 5, 8)
